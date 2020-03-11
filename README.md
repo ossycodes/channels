@@ -1,58 +1,123 @@
-Please see [this repo](https://github.com/laravel-notification-channels/channels) for instructions on how to submit a channel proposal.
+# AfricasTalking notification channel for Laravel
 
-# A Boilerplate repo for contributions
-
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/:package_name.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/:package_name)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/africastalking.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/africastalking)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/laravel-notification-channels/:package_name/master.svg?style=flat-square)](https://travis-ci.org/laravel-notification-channels/:package_name)
-[![StyleCI](https://styleci.io/repos/:style_ci_id/shield)](https://styleci.io/repos/:style_ci_id)
-[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/:sensio_labs_id.svg?style=flat-square)](https://insight.sensiolabs.com/projects/:sensio_labs_id)
-[![Quality Score](https://img.shields.io/scrutinizer/g/laravel-notification-channels/:package_name.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/:package_name)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/:package_name/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/:package_name/?branch=master)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/:package_name.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/:package_name)
+[![Build Status](https://img.shields.io/travis/laravel-notification-channels/africastalking/master.svg?style=flat-square)](https://travis-ci.org/laravel-notification-channels/africastalking)
+[![StyleCI](https://styleci.io/repos/65847386/shield)](https://styleci.io/repos/65847386)
+[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/de277182-faa4-4576-bebb-9f201e27960a.svg?style=flat-square)](https://insight.sensiolabs.com/projects/de277182-faa4-4576-bebb-9f201e27960a)
+[![Quality Score](https://img.shields.io/scrutinizer/g/laravel-notification-channels/africastalking.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/africastalking)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/africastalking/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/africastalking/?branch=master)
+[![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/africastalking.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/africastalking)
 
-This package makes it easy to send notifications using [:service_name](link to service) with Laravel 5.5+, 6.x and 7.x
-
-**Note:** Replace ```:channel_namespace``` ```:service_name``` ```:author_name``` ```:author_username``` ```:author_website``` ```:author_email``` ```:package_name``` ```:package_description``` ```:style_ci_id``` ```:sensio_labs_id``` with their correct values in [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE.md](LICENSE.md), [composer.json](composer.json) and other files, then delete this line.
-**Tip:** Use "Find in Path/Files" in your code editor to find these keywords within the package directory and replace all occurences with your specified term.
-
-This is where your description should go. Add a little code example so build can understand real quick how the package can be used. Try and limit it to a paragraph or two.
-
-
+This package makes it easy to send notifications using [AfricasTalking](https://build.at-labs.io/docs/sms%2Fsending) with Laravel.
 
 ## Contents
 
+- [About](#about)
 - [Installation](#installation)
-	- [Setting up the :service_name service](#setting-up-the-:service_name-service)
+- [Setting up the AfricasTalking service](#setting-up-the-africastalking-service)
 - [Usage](#usage)
-	- [Available Message methods](#available-message-methods)
-- [Changelog](#changelog)
 - [Testing](#testing)
 - [Security](#security)
 - [Contributing](#contributing)
 - [Credits](#credits)
 - [License](#license)
 
+## About
+
+This package is part of the [Laravel Notification Channels](http://laravel-notification-channels.com/) project. It provides additional Laravel Notification channels to the ones given by [Laravel](https://laravel.com/docs/master/notifications) itself.
+
+The AfricasTalking channel makes it possible to send out Laravel notifications as a `SMS ` using AfricasTalking API.
 
 ## Installation
 
-Please also include the steps for any third-party service setup that's required for this package.
+You can install this package via composer:
 
-### Setting up the :service_name service
+``` bash
+composer require laravel-notification-channels/africastalking
+```
 
-Optionally include a few steps how users can set up the service.
+The service provider gets loaded automatically.
+
+### Setting up the AfricasTalking service
+
+You will need to [Register](https://account.africastalking.com/auth/register/) and then go to your sandbox app [Go To SandBox App](https://account.africastalking.com/apps/sandbox). [Click on settings](https://account.africastalking.com/apps/sandbox/settings/key) Within this page, you will generate your `Username and key`. Place them inside your `.env` file. To load them, add this to your `config/services.php` file:
+
+```php
+
+'africastalking' => [
+    'username'    => env('USERNAME'),
+    'key' => env('KEY'),
+]
+```
+
+
+This will load the AfricasTalking  data from the `.env` file. Make sure to use the same keys you have used there like `USERNAME`.
+
+
+Add the ```routeNotifcationForAfricasTalking``` method on your notifiable Model. If this is not added,
+the ```phone_number``` field will be automatically used.  
+
+```php
+<?php
+
+namespace App;
+
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use Notifiable;
+
+    /**
+     * Route notifications for the Africas Talking channel.
+     *
+     * @param  \Illuminate\Notifications\Notification  $notification
+     * @return string
+     */
+    public function routeNotificationForAfricasTalking($notification)
+    {
+        return $this->phone;
+    }
+}
+```
+
 
 ## Usage
 
-Some code examples, make it clear how to use the package
 
-### Available Message methods
+To use this package, you need to create a notification class, like `NewsWasPublished` from the example below, in your Laravel application. Make sure to check out [Laravel's documentation](https://laravel.com/docs/master/notifications) for this process.
 
-A list of all available options
 
-## Changelog
+```php
+<?php
 
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+use NotificationChannels\AfricasTalking\AfricasTalkingChannel;
+
+class NewsWasPublished extends Notification
+{
+
+    /**
+     * Get the notification's delivery channels.
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
+    public function via($notifiable)
+    {
+        return [AfricasTalkingChannel::class];
+    }
+
+    public function toAfricasTalking($notifiable)
+    {
+		return (new AfricasTalkingMessage())
+                    ->content('Your SMS message content');
+
+    }
+}
+```
+
 
 ## Testing
 
@@ -62,7 +127,7 @@ $ composer test
 
 ## Security
 
-If you discover any security related issues, please email :author_email instead of using the issue tracker.
+If you discover any security-related issues, please email osaigbovoemmanuel1@gmail.com instead of using the issue tracker.
 
 ## Contributing
 
@@ -70,9 +135,13 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
+- [Osaigbovo Emmanuel](https://github.com/ossycodes)
 - [All Contributors](../../contributors)
 
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+## How do I say Thank you?
+
+Leave a star and follow me on [Twitter](https://twitter.com/ossycodes) .
