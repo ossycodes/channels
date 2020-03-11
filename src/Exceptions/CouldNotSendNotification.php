@@ -1,11 +1,13 @@
 <?php
 
-namespace NotificationChannels\:channel_namespace\Exceptions;
+namespace NotificationChannels\AfricasTalking\Exceptions;
 
-class CouldNotSendNotification extends \Exception
+use Exception;
+
+class CouldNotSendNotification extends Exception
 {
-    public static function serviceRespondedWithAnError($response)
+    public static function serviceRespondedWithAnError(string $error): self
     {
-        return new static("Descriptive error message.");
+        return new static("AfricasTalking service responded with an error: {$error}'");
     }
 }
