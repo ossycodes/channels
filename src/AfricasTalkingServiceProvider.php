@@ -21,10 +21,9 @@ class AfricasTalkingServiceProvider extends ServiceProvider
             ->give(function () {
                 $userName = config("services.africastalking.username");
                 $key = config("services.africastalking.key");
-                dd($userName, $key);
-                // if (is_null($userName) || is_null($key)) {
-                //     throw InvalidConfiguration::configurationNotSet();
-                // }
+                if (is_null($userName) || is_null($key)) {
+                    throw InvalidConfiguration::configurationNotSet();
+                }
                 $at =  new AfricasTalkingSDK(
                     $userName,
                     $key
