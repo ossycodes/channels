@@ -1,7 +1,7 @@
 {
     "name": "ossycodes/africastalking-laravel-notification-channel",
     "description": "This package makes it easy to send notifications via AfricasTalking with Laravel",
-    "homepage": "https://github.com/laravel-notification-channels/africastalking",
+    "homepage": "https://github.com/ossycodes/africastalking",
     "license": "MIT",
     "authors": [
         {
