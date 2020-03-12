@@ -44,7 +44,6 @@ The service provider gets loaded automatically.
 You will need to [Register](https://account.africastalking.com/auth/register/) and then go to your sandbox app [Go To SandBox App](https://account.africastalking.com/apps/sandbox). [Click on settings](https://account.africastalking.com/apps/sandbox/settings/key) Within this page, you will generate your `Username and key`. Place them inside your `.env` file. To load them, add this to your `config/services.php` file:
 
 ```php
-
 'africastalking' => [
     'username'    => env('USERNAME'),
     'key' => env('KEY'),
