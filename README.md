@@ -93,6 +93,7 @@ To use this package, you need to create a notification class, like `NewsWasPubli
 <?php
 
 use NotificationChannels\AfricasTalking\AfricasTalkingChannel;
+use NotificationChannels\AfricasTalking\AfricasTalkingMessage;
 
 class NewsWasPublished extends Notification
 {
