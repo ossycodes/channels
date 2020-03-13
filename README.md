@@ -1,13 +1,5 @@
 # AfricasTalking notification channel for Laravel
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/africastalking.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/africastalking)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/laravel-notification-channels/africastalking/master.svg?style=flat-square)](https://travis-ci.org/laravel-notification-channels/africastalking)
-[![StyleCI](https://styleci.io/repos/65847386/shield)](https://styleci.io/repos/65847386)
-[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/de277182-faa4-4576-bebb-9f201e27960a.svg?style=flat-square)](https://insight.sensiolabs.com/projects/de277182-faa4-4576-bebb-9f201e27960a)
-[![Quality Score](https://img.shields.io/scrutinizer/g/laravel-notification-channels/africastalking.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/africastalking)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/africastalking/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/africastalking/?branch=master)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/africastalking.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/africastalking)
 
 This package makes it easy to send notifications using [AfricasTalking](https://build.at-labs.io/docs/sms%2Fsending) with Laravel.
 

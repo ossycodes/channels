@@ -1,6 +1,13 @@
 {
     "name": "ossycodes/africastalking-laravel-notification-channel",
     "description": "This package makes it easy to send notifications via AfricasTalking with Laravel",
+    "keywords": [
+        "africastalking",
+        "laravel",
+        "notification",
+        "notification-channel",
+        "laravel-notification-channel"
+    ],
     "homepage": "https://github.com/ossycodes/africastalking",
     "license": "MIT",
     "authors": [
@@ -11,15 +18,15 @@
         }
     ],
     "require": {
-        "php": ">=7.2.5",
+        "php": "^7.2",
         "africastalking/africastalking": "^2.3",
-        "illuminate/notifications": "^7.0",
-        "illuminate/support": "^7.0"
+        "illuminate/notifications": "^5.8.15|^6.0",
+        "illuminate/support": "^5.8.15|^6.0"
     },
     "require-dev": {
         "mockery/mockery": "^1.3.1",
         "phpunit/phpunit": "^8.0",
-        "orchestra/testbench": "~5.0"
+        "orchestra/testbench": "3.8.*|4.*"
     },
     "autoload": {
         "psr-4": {
