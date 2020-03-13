@@ -43,7 +43,5 @@
                 "NotificationChannels\\AfricasTalking\\AfricasTalkingServiceProvider"
             ]
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
