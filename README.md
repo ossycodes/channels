@@ -34,7 +34,7 @@ The AfricasTalking channel makes it possible to send out Laravel notifications a
 You can install this package via composer:
 
 ``` bash
-composer require laravel-notification-channels/africastalking
+composer require ossycodes/africastalking
 ```
 
 The service provider gets loaded automatically.
